@@ -1,11 +1,7 @@
 package teksturepako.onscaleof
 
 import androidx.compose.animation.*
-import androidx.compose.animation.core.*
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.input.TextFieldState
@@ -22,7 +18,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.composeunstyled.*
+import com.composeunstyled.Text
+import com.composeunstyled.TextField
+import com.composeunstyled.TextInput
 import com.composeunstyled.platformtheme.EmojiVariant
 import com.composeunstyled.platformtheme.WebFontOptions
 import com.composeunstyled.platformtheme.buildPlatformTheme
@@ -38,8 +36,8 @@ import io.github.vinceglb.filekit.dialogs.compose.rememberFilePickerLauncher
 import io.github.vinceglb.filekit.dialogs.compose.util.toImageBitmap
 import io.github.vinceglb.filekit.saveImageToGallery
 import kotlinx.coroutines.delay
-import org.jetbrains.compose.ui.tooling.preview.Preview
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 // Modern color scheme
 object AppColors {
@@ -89,23 +87,24 @@ fun MemeGeneratorScreen() {
     val scope = rememberCoroutineScope()
     var currentSelectionIndex by remember { mutableStateOf<Int?>(null) }
     var saveStatus by remember { mutableStateOf<SaveStatus?>(null) }
+    val scrollState = rememberScrollState()
 
     val imagePickerLauncher = rememberFilePickerLauncher(
         type = FileKitType.Image,
         mode = FileKitMode.Single,
         title = "Pick an image"
-    ) { file ->
-        file?.let { platformFile ->
-            scope.launch {
-                currentSelectionIndex?.let { index ->
-                    try {
-                        val bitmap = platformFile.toImageBitmap()
-                        selectedImages = selectedImages.toMutableList().apply {
-                            set(index, ImageData(platformFile, bitmap))
-                        }
-                    } catch (e: Exception) {
-                        e.printStackTrace()
+    ) x@{ file ->
+        val platformFile = file ?: return@x
+
+        scope.launch {
+            currentSelectionIndex?.let { index ->
+                try {
+                    val bitmap = platformFile.toImageBitmap()
+                    selectedImages = selectedImages.toMutableList().apply {
+                        set(index, ImageData(platformFile, bitmap))
                     }
+                } catch (e: Exception) {
+                    e.printStackTrace()
                 }
             }
         }
@@ -121,7 +120,8 @@ fun MemeGeneratorScreen() {
             modifier = Modifier
                 .fillMaxWidth()
                 .widthIn(max = 600.dp)
-                .padding(24.dp),
+                .padding(24.dp)
+                .verticalScroll(scrollState),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(32.dp)
         ) {
@@ -135,7 +135,7 @@ fun MemeGeneratorScreen() {
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     Text(
-                        "On a scale of random",
+                        "On a scale of random...",
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Medium,
                         color = AppColors.TextPrimary
@@ -159,7 +159,7 @@ fun MemeGeneratorScreen() {
                     }
 
                     Text(
-                        "how do you feel today?",
+                        "...how are you feeling today?",
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Medium,
                         color = AppColors.TextPrimary
@@ -315,13 +315,6 @@ fun ModernImageCell(
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    var isHovered by remember { mutableStateOf(false) }
-
-    val scale by animateFloatAsState(
-        targetValue = if (isHovered) 0.95f else 1f,
-        animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy)
-    )
-
     Box(
         modifier = modifier
             .aspectRatio(1f)
