@@ -1,12 +1,12 @@
 package teksturepako.onscaleof
 
-import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Rect
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.core.graphics.createBitmap
 
 actual fun createMemeImage(
     images: List<ImageBitmap?>,
@@ -18,7 +18,7 @@ actual fun createMemeImage(
     val totalHeight = headerHeight + gridSize
 
     // Create bitmap for the meme
-    val resultBitmap = Bitmap.createBitmap(gridSize, totalHeight, Bitmap.Config.ARGB_8888)
+    val resultBitmap = createBitmap(gridSize, totalHeight)
     val canvas = Canvas(resultBitmap)
 
     // Draw white background
@@ -38,7 +38,7 @@ actual fun createMemeImage(
 
     canvas.drawText("On a scale of random", gridSize / 2f, 60f, textPaint)
     canvas.drawText(text, gridSize / 2f, 120f, textPaint)
-    canvas.drawText("how do you feel today?", gridSize / 2f, 180f, textPaint)
+    canvas.drawText("how are you feeling today?", gridSize / 2f, 180f, textPaint)
 
     // Draw grid
     for (row in 0..2) {
