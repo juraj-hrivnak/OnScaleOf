@@ -1,3 +1,13 @@
+## On Scale Of
+
+On a scale of a random Kotlin programmer, how are you feeling today? :)
+
+This is a simple app to generate the "on scale of a random <>, how are you feeling today?" meme.
+
+Enjoy!
+
+## Development
+
 This is a Kotlin Multiplatform project targeting Android, iOS, Desktop (JVM).
 
 * [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
