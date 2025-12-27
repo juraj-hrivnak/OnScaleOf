@@ -6,6 +6,11 @@ This is a simple app to generate the "on scale of a random <>, how are you feeli
 
 Enjoy!
 
+> [!IMPORTANT]  
+> Only the Andriod App is currently implemented.
+>
+> Desktop App is WIP & iOS is on hold.
+
 ## Development
 
 This is a Kotlin Multiplatform project targeting Android, iOS, Desktop (JVM).
