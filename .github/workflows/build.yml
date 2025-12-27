@@ -7,7 +7,7 @@ jobs:
   build-android:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout source
         uses: actions/checkout@v4
 
       - name: Set up JDK 17
@@ -19,11 +19,11 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x ./gradlew
+      - name: Set up Gradle with caching
+        uses: gradle/actions/setup-gradle@v5
 
       - name: Build Android APK
-        run: ./gradlew :composeApp:assembleDebug
+        run: ./gradlew :composeApp:assembleDebug --parallel
 
       - name: Upload Android APK
         uses: actions/upload-artifact@v4
@@ -37,7 +37,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
-      - name: Checkout code
+      - name: Checkout source
         uses: actions/checkout@v4
 
       - name: Set up JDK 17
@@ -46,14 +46,15 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x ./gradlew
-        
+      - name: Set up Gradle with caching
+        uses: gradle/actions/setup-gradle@v5
+
       - name: Build Compose Desktop distribution for ${{ matrix.os }}
-        run: ./gradlew :composeApp:packageDistributionForCurrentOS
+        run: ./gradlew :composeApp:packageDistributionForCurrentOS --parallel
 
       - name: Upload Compose Desktop distribution
         uses: actions/upload-artifact@v4
         with:
           name: compose-desktop-dist-${{ matrix.os }}
           path: composeApp/build/compose/binaries/main/*/
+          
