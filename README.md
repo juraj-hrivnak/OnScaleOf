@@ -17,14 +17,30 @@ On a scale of a random Kotlin programmer, how are you feeling today? :)
 
 ## About
 
-> [!IMPORTANT]  
-> Only the Andriod App is currently implemented.
->
-> Desktop App is WIP & iOS is on hold.
-
 This is a simple app to generate the "on scale of a random <>, how are you feeling today?" meme.
 
 Enjoy!
+
+
+## Platforms
+
+<table>
+<tr>
+  <td>
+    <strong>Android</strong><br>
+    <sup><b>Supported.<b></sup>
+  </td>
+  <td>
+    <strong>Desktop</strong><br>
+    <sup><b>Windows and Linux supported.</b></sup>
+  </td>
+  <td>
+    <strong>iOS</strong><br>
+    <sup><b>Not supported.</b></sup>
+  </td>
+</tr>
+</table>
+
 
 ## Development
 
