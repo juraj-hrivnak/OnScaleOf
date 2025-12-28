@@ -102,8 +102,8 @@ jobs:
           prerelease: true
           files: |
             artifacts/android/*.apk
-            artifacts/desktop/linux/**
-            artifacts/desktop/windows/**
-            artifacts/desktop/macos/**
+            artifacts/desktop/linux/*.deb
+            artifacts/desktop/windows/*.exe
+            artifacts/desktop/macos/*.dmg
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
