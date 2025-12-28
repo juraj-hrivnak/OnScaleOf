@@ -1,0 +1,74 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="bg" x1="0" y1="0" x2="256" y2="256" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#7F52FF"/>
+            <stop offset="100%" stop-color="#FFB13B"/>
+        </linearGradient>
+        <style>
+            .face-eye { fill: #393959; }
+            .face-mouth { stroke: #393959; stroke-width: 2.8; stroke-linecap: round; fill: none; }
+        </style>
+    </defs>
+    <rect width="256" height="256" rx="56" fill="url(#bg)"/>
+    <rect x="36" y="36" width="184" height="184" rx="36" fill="#fff" stroke="#fff" stroke-width="6"/>
+    <rect x="91" y="48" width="6" height="160" rx="3" fill="#7F52FF"/>
+    <rect x="159" y="48" width="6" height="160" rx="3" fill="#7F52FF"/>
+    <rect x="48" y="91" width="160" height="6" rx="3" fill="#FFB13B"/>
+    <rect x="48" y="159" width="160" height="6" rx="3" fill="#FFB13B"/>
+    <!-- Minimal centered faces -->
+    <!-- Cell positions: 64,64 | 128,64 | 192,64 | 64,128 | 128,128 | 192,128 | 64,192 | 128,192 | 192,192 -->
+    <!-- Happy -->
+    <g>
+        <circle class="face-eye" cx="56" cy="60" r="3.5"/>
+        <circle class="face-eye" cx="72" cy="60" r="3.5"/>
+        <path class="face-mouth" d="M58 68 Q64 76 70 68"/>
+    </g>
+    <!-- Sad -->
+    <g>
+        <circle class="face-eye" cx="120" cy="60" r="3.5"/>
+        <circle class="face-eye" cx="136" cy="60" r="3.5"/>
+        <path class="face-mouth" d="M122 72 Q128 65 134 72"/>
+    </g>
+    <!-- Surprised (mouth: open, straight down) -->
+    <g>
+        <circle class="face-eye" cx="184" cy="60" r="3.5"/>
+        <circle class="face-eye" cx="200" cy="60" r="3.5"/>
+        <circle class="face-eye" cx="192" cy="70" r="3"/>
+    </g>
+    <!-- Wink (left eye closed with line) -->
+    <g>
+        <circle class="face-eye" cx="56" cy="124" r="3.5"/>
+        <path class="face-mouth" d="M64 122 l8 0"/>
+        <path class="face-mouth" d="M58 132 Q64 139 70 132"/>
+    </g>
+    <!-- Neutral (flat mouth) -->
+    <g>
+        <circle class="face-eye" cx="120" cy="124" r="3.5"/>
+        <circle class="face-eye" cx="136" cy="124" r="3.5"/>
+        <path class="face-mouth" d="M124 134 l8 0"/>
+    </g>
+    <!-- Silly (~ mouth) -->
+    <g>
+        <circle class="face-eye" cx="184" cy="124" r="3.5"/>
+        <circle class="face-eye" cx="200" cy="124" r="3.5"/>
+        <path class="face-mouth" d="M188 132 Q192 139 196 132"/>
+    </g>
+    <!-- Tired (arc mouth up) -->
+    <g>
+        <circle class="face-eye" cx="56" cy="188" r="3.5"/>
+        <circle class="face-eye" cx="72" cy="188" r="3.5"/>
+        <path class="face-mouth" d="M60 196 Q64 192 68 196"/>
+    </g>
+    <!-- Angry (angled mouth) -->
+    <g>
+        <circle class="face-eye" cx="120" cy="188" r="3.5"/>
+        <circle class="face-eye" cx="136" cy="188" r="3.5"/>
+        <path class="face-mouth" d="M122 198 Q128 191 134 198"/>
+    </g>
+    <!-- Cool (flat mouth, maybe eyes close together) -->
+    <g>
+        <circle class="face-eye" cx="188" cy="188" r="3.5"/>
+        <circle class="face-eye" cx="196" cy="188" r="3.5"/>
+        <path class="face-mouth" d="M190 196 l8 0"/>
+    </g>
+</svg>

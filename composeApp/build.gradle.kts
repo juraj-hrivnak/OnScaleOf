@@ -15,7 +15,7 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
+
     listOf(
         iosArm64(),
         iosSimulatorArm64()
@@ -25,9 +25,9 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     jvm()
-    
+
     sourceSets {
         androidMain.dependencies {
             implementation(compose.preview)
@@ -95,9 +95,21 @@ compose.desktop {
         mainClass = "teksturepako.onscaleof.MainKt"
 
         nativeDistributions {
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "teksturepako.onscaleof"
+
+            packageName = "On Scale Of"
             packageVersion = "1.0.0"
+            vendor = "teksturepako"
+
+            targetFormats(TargetFormat.Dmg, TargetFormat.Exe, TargetFormat.Deb)
+
+            windows {
+                menuGroup = group.toString()
+                shortcut = true
+                iconFile.set(project.file("icns/icon.ico"))
+            }
+            linux {
+                iconFile.set(project.file("icns/icon.png"))
+            }
         }
     }
 }
