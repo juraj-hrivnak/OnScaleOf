@@ -214,33 +214,33 @@ fun MemeGeneratorScreen() {
             // Save Button
             ModernButton(
                 onClick = {
-                    if (permissionState.status.isGranted) {
-                        scope.launch {
-                            try {
-                                saveStatus = SaveStatus.Loading
-                                val memeText = textFieldState.text.toString()
-                                val memeBitmap = createMemeImage(
-                                    images = selectedImages.map { it?.bitmap },
-                                    text = memeText
-                                )
-                                val bytes = memeBitmap.toByteArray()
-
-                                FileKit.saveImageToGallery(
-                                    bytes = bytes,
-                                    filename = "meme.png"
-                                )
-
-                                delay(3000)
-                                saveStatus = null
-                            } catch (e: Exception) {
-                                e.printStackTrace()
-                                saveStatus = SaveStatus.Error
-                                delay(3000)
-                                saveStatus = null
-                            }
-                        }
-                    } else {
+                    if (!permissionState.status.isGranted || platform() != Platform.ANDROID) {
                         permissionState.launchPermissionRequest()
+                    }
+
+                    scope.launch {
+                        try {
+                            saveStatus = SaveStatus.Loading
+                            val memeText = textFieldState.text.toString()
+                            val memeBitmap = createMemeImage(
+                                images = selectedImages.map { it?.bitmap },
+                                text = memeText
+                            )
+                            val bytes = memeBitmap.toByteArray()
+
+                            FileKit.saveImageToGallery(
+                                bytes = bytes,
+                                filename = "meme.png"
+                            )
+
+                            delay(3000)
+                            saveStatus = null
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                            saveStatus = SaveStatus.Error
+                            delay(3000)
+                            saveStatus = null
+                        }
                     }
                 },
                 enabled = selectedImages.any { it != null } && textFieldState.text.isNotEmpty(),
