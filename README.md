@@ -1,15 +1,30 @@
+<div align="center">
+
+<p align="center">
+  <img
+    src="composeApp/icns/icon.svg"
+    alt="OnScaleOf app icon"
+    width="128"
+    height="128"
+  />
+</p>
+
 ## On Scale Of
 
 On a scale of a random Kotlin programmer, how are you feeling today? :)
 
-This is a simple app to generate the "on scale of a random <>, how are you feeling today?" meme.
+</div>
 
-Enjoy!
+## About
 
 > [!IMPORTANT]  
 > Only the Andriod App is currently implemented.
 >
 > Desktop App is WIP & iOS is on hold.
+
+This is a simple app to generate the "on scale of a random <>, how are you feeling today?" meme.
+
+Enjoy!
 
 ## Development
 
