@@ -102,6 +102,8 @@ compose.desktop {
 
             targetFormats(TargetFormat.Dmg, TargetFormat.Exe, TargetFormat.Deb)
 
+            modules("java.instrument", "jdk.security.auth", "jdk.unsupported")
+
             windows {
                 menuGroup = group.toString()
                 shortcut = true
