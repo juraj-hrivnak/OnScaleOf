@@ -141,7 +141,9 @@ fun MemeGeneratorScreen() {
                         color = AppColors.TextPrimary
                     )
 
-                    Box(
+                    TextField(
+                        state = textFieldState,
+                        singleLine = true,
                         modifier = Modifier
                             .fillMaxWidth()
                             .clip(RoundedCornerShape(12.dp))
@@ -149,13 +151,7 @@ fun MemeGeneratorScreen() {
                             .border(2.dp, AppColors.Border, RoundedCornerShape(12.dp))
                             .padding(16.dp)
                     ) {
-                        TextField(
-                            state = textFieldState,
-                            singleLine = true,
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            TextInput()
-                        }
+                        TextInput()
                     }
 
                     Text(
@@ -182,7 +178,7 @@ fun MemeGeneratorScreen() {
                         color = AppColors.TextPrimary
                     )
 
-                    ModernImageGrid(
+                    ImageGrid(
                         images = selectedImages,
                         onImageClick = { index ->
                             currentSelectionIndex = index
@@ -285,7 +281,7 @@ fun Card(
 }
 
 @Composable
-fun ModernImageGrid(
+fun ImageGrid(
     images: List<ImageData?>,
     onImageClick: (Int) -> Unit
 ) {
@@ -298,7 +294,7 @@ fun ModernImageGrid(
             ) {
                 for (col in 0..2) {
                     val index = row * 3 + col
-                    ModernImageCell(
+                    ImageCell(
                         imageData = images[index],
                         onClick = { onImageClick(index) },
                         modifier = Modifier.weight(1f)
@@ -310,7 +306,7 @@ fun ModernImageGrid(
 }
 
 @Composable
-fun ModernImageCell(
+fun ImageCell(
     imageData: ImageData?,
     onClick: () -> Unit,
     modifier: Modifier = Modifier
