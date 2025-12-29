@@ -94,6 +94,8 @@ jobs:
           name: compose-desktop-dist-macos-latest
           path: artifacts/desktop/macos
 
+      - run: ls
+
       - name: Create Pre-release on GitHub
         uses: softprops/action-gh-release@v2
         with:
@@ -102,8 +104,8 @@ jobs:
           prerelease: true
           files: |
             artifacts/android/*.apk
-            artifacts/desktop/linux/*.deb
-            artifacts/desktop/windows/*.exe
-            artifacts/desktop/macos/*.dmg
+            artifacts/desktop/linux/**/*.deb
+            artifacts/desktop/windows/**/*.exe
+            artifacts/desktop/macos/**/*.dmg
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
