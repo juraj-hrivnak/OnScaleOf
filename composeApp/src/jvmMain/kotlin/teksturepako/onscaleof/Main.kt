@@ -7,7 +7,7 @@ import androidx.compose.ui.window.application
 fun main() = application {
     Window(
         onCloseRequest = ::exitApplication,
-        title = "OnScaleOf",
+        title = "On Scale Of",
         icon = painterResource("icon.svg")
     ) {
         App()
